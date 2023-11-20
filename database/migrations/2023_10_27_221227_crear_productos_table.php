@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('unidad_de_medida');
             $table->string('descripcion');
             $table->integer('precio');
-
+            $table->timestamps();
 
         });
     }

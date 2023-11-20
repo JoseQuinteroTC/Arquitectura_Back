@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use app\Http\Controllers\ProductoController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +24,7 @@ Route::post('updateData', [UserController::class, "updateData"]);
 Route::post('deleteUser/{id}', [UserController::class, "deleteUser"]);
 Route::get('user', [UserController::class, "showAll"]);
 Route::get('token/{token}', [UserController::class, "showToken"]);
+Route::get('productos', [ProductoController::class, "showAll"]);
 
 
 
@@ -32,6 +33,7 @@ Route::get('token/{token}', [UserController::class, "showToken"]);
 
 Route::post('crearProducto', [ProductoController::class, "crearProducto"]);
 Route::get('producto/{id}', [ProductoController::class, "showId"]);
+
 Route::get('productoNombre/{name}', [ProductoController::class, "findName"]);
 Route::post('actualizarProducto', [ProductoController::class, "updateData"]);
 Route::post('deleteProcusto/{id}', [ProductoController::class, "crearProducto"]);

@@ -72,7 +72,6 @@ class ProductoController extends Controller
         $validator = validator::make($request->all(), [
             'nombre' => 'required|string|max:255',
             'categoria' => 'required|string|max:255',
-            'vendedor' => 'required|string|max:255',
             'unidad_de_medida' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
             'precio' => 'required|integer',
@@ -87,7 +86,7 @@ class ProductoController extends Controller
         $producto = Producto::create([
             'nombre' => $request->nombre,
             'categoria' => $request->categoria,
-            'vendedor' => $request->vendedor,
+            'user_id' => $request->user_id,
             'unidad_de_medida' => $request->unidad_de_medida,
             'descripcion' => $request->descripcion,
             'precio' => $request->precio,
