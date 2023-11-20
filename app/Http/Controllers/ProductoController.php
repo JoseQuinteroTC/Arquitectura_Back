@@ -22,7 +22,7 @@ class ProductoController extends Controller
         $producto = Producto::find($id);
 
         return response()
-            ->json(['prducto' => $producto]);
+            ->json($producto);
     }
 
     public function findName($name)
@@ -97,4 +97,6 @@ class ProductoController extends Controller
         return response()
             ->json(['data' => $producto,]);
     }
+
+
 }
