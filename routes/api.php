@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\PedidosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::post('updateData', [UserController::class, "updateData"]);
 Route::post('deleteUser/{id}', [UserController::class, "deleteUser"]);
 Route::get('user', [UserController::class, "showAll"]);
 Route::get('token/{token}', [UserController::class, "showToken"]);
-Route::get('productos', [ProductoController::class, "showAll"]);
+
 
 
 
@@ -33,10 +34,14 @@ Route::get('productos', [ProductoController::class, "showAll"]);
 
 Route::post('crearProducto', [ProductoController::class, "crearProducto"]);
 Route::get('producto/{id}', [ProductoController::class, "showId"]);
-
+Route::get('productos', [ProductoController::class, "showAll"]);
 Route::get('productoNombre/{name}', [ProductoController::class, "findName"]);
 Route::post('actualizarProducto', [ProductoController::class, "updateData"]);
 Route::post('deleteProcusto/{id}', [ProductoController::class, "crearProducto"]);
+
+//Crud carrito
+Route::post('carrito', [PedidosController::class, "carrito"]);
+Route::get('mostrarCarrito/{user_id}', [PedidosController::class, "mostrarCarrito"]);
 
 
 Route::middleware('auth:sanctum')->group( function() {
