@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('cantidad');
             $table->integer('precio');
             $table->boolean('carrito');
-
+            $table->timestamps();
         });
     }
 
