@@ -13,10 +13,12 @@ return new class extends Migration
     {
         //
 
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id('id');
-            $table->foreign('idUsuario');
-            $table->foreign('idProducto');
+            $table->unsignedBigInteger('user_id'); // Clave foránea
+            $table->unsignedBigInteger('producto_id'); // Clave foránea
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('producto_id')->references('id')->on('productos');
             $table->integer('cantidad');
             $table->integer('precio');
             $table->boolean('carrito');

@@ -14,7 +14,8 @@ return new class extends Migration
         //
         Schema::create('productos', function (Blueprint $table) {
             $table->id('id');
-            $table->foreign('idUsuario');
+            $table->unsignedBigInteger('user_id'); // Clave foránea
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('nombre');
             $table->integer('cantidad');
             $table->string('categoria');
