@@ -23,6 +23,7 @@ Route::post('login', [AuthController::class, "login"]);
 Route::post('updateData', [UserController::class, "updateData"]);
 Route::post('deleteUser/{id}', [UserController::class, "deleteUser"]);
 Route::get('user', [UserController::class, "showAll"]);
+Route::get('token/{token}', [UserController::class, "showToken"]);
 
 
 
