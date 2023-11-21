@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pedidos;
+use App\Models\Producto;
 
 class PedidosController extends Controller
 {
@@ -14,9 +15,6 @@ class PedidosController extends Controller
             'user_id' => $request->user_id,
             'producto_id' => $request->producto_id,
             'cantidad' => $request->cantidad,
-            'precio' => $request->precio,
-            'carrito' => $request->carrito,
-
         ]);
 
         return response()
@@ -25,10 +23,22 @@ class PedidosController extends Controller
 
     public function mostrarCarrito($user_id)
     {
-        $pedido = Pedidos::find($user_id);
+        $pedidos = Pedidos::where('user_id', 'LIKE', '%' . $user_id)->get();
+        $productoUser = [];
+
+        foreach ($pedidos as $pedido) {
+            $producto = Producto::find($pedido->producto_id);
+            if ($producto) {
+                $producto->pedido=$pedido;
+                $productoUser[] = $producto;
+            }
+
+        }
+
 
         return response()
-            ->json($pedido);
+            ->json($productoUser);
+
     }
 
 }

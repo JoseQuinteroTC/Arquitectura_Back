@@ -12,7 +12,5 @@ class Pedidos extends Model
         'user_id',
         'producto_id',
         'cantidad',
-        'precio',
-        'carrito',
     ];
 }
