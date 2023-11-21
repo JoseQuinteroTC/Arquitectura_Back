@@ -29,16 +29,43 @@ class PedidosController extends Controller
         foreach ($pedidos as $pedido) {
             $producto = Producto::find($pedido->producto_id);
             if ($producto) {
-                $producto->pedido=$pedido;
+                $producto->pedido = $pedido;
                 $productoUser[] = $producto;
             }
-
         }
 
 
         return response()
             ->json($productoUser);
+    }
 
+    public function borrarPedido($id)
+    {
+        $producto = Pedidos::findOrFail($id);
+        $producto->delete();
+
+        return response()
+            ->json(['status' => 'eliminado',]);
+    }
+
+    public function borrarCarrito($user_id)
+    {
+
+        $pedidos = Pedidos::where('user_id', 'LIKE', '%' . $user_id)->get();
+
+
+        if ($pedidos) {
+            foreach ($pedidos as $pedido) {
+
+
+                $pedido->delete();
+
+            }
+        }
+
+
+        return response()
+            ->json(['status' => 'eliminado',]);
     }
 
 }

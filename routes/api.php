@@ -37,10 +37,14 @@ Route::get('producto/{id}', [ProductoController::class, "showId"]);
 Route::get('productos', [ProductoController::class, "showAll"]);
 Route::get('productoNombre/{name}', [ProductoController::class, "findName"]);
 Route::post('actualizarProducto', [ProductoController::class, "updateData"]);
-Route::post('deleteProcusto/{id}', [ProductoController::class, "crearProducto"]);
+Route::post('deleteProducto/{id}', [ProductoController::class, "crearProducto"]);
 
 //Crud carrito
 Route::post('carrito', [PedidosController::class, "carrito"]);
+Route::post('borrarPedido/{producto_id}', [PedidosController::class, "borrarPedido"]);
+
+Route::post('borrarCarrito/{user_id}', [PedidosController::class, "borrarCarrito"]);
+
 Route::get('mostrarCarrito/{user_id}', [PedidosController::class, "mostrarCarrito"]);
 
 
